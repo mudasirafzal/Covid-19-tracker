@@ -12,6 +12,7 @@ export default function App() {
 
   useEffect(() => {
     axios.get("https://corona.lmao.ninja/countries").then(res => {
+      //console.log(res.data);
       setCountryData([...res.data]);
     });
 
@@ -76,11 +77,48 @@ export default function App() {
                   </div>
                 </div>
               </Grid>
+
+              <Grid item md={3} xs={4}>
+                <div className="world-data-item">
+                  <div>
+                    <p className="caption" style={{ color: "#e74c3c" }}>
+                      Total Deaths
+                    </p>
+                    <p className="title-large" style={{ color: "#e74c3c" }}>
+                      {worldData.deaths}
+                    </p>
+                  </div>
+                </div>
+              </Grid>
               <Grid item md={3} xs={4}>
                 <div className="world-data-item">
                   <div>
                     <p className="caption" style={{ color: "#27ae60" }}>
-                      Recovery Rate
+                      Total Recovered
+                    </p>
+                    <p className="title-large" style={{ color: "#27ae60" }}>
+                      {worldData.recovered}
+                    </p>
+                  </div>
+                </div>
+              </Grid>
+              <Grid item md={3} xs={4}>
+                <div className="world-data-item">
+                  <div>
+                    <p className="caption" style={{ color: "#d6d118" }}>
+                      Active Cases
+                    </p>
+                    <p className="title-large" style={{ color: "#d6d118" }}>
+                      {worldData.active}
+                    </p>
+                  </div>
+                </div>
+              </Grid>
+              <Grid item md={3} xs={4}>
+                <div className="world-data-item">
+                  <div>
+                    <p className="caption" style={{ color: "#27ae60" }}>
+                      Total Recovery Rate
                     </p>
                     <p className="title-large" style={{ color: "#27ae60" }}>
                       {(
@@ -98,7 +136,7 @@ export default function App() {
                 <div className="world-data-item">
                   <div>
                     <p className="caption" style={{ color: "#e74c3c" }}>
-                      Death Rate
+                      Total Death Rate
                     </p>
                     <p className="title-large" style={{ color: "#e74c3c" }}>
                       {Math.round(
@@ -122,24 +160,27 @@ export default function App() {
 
           <Grid item md={12} xs={12} className="heading-wrapper">
             <Grid container>
-              <Grid item xs={12} md={4} className="flex-start">
+              <Grid item xs={8} md={2} className="flex-start">
                 <p className="caption">Country</p>
               </Grid>
 
-              <Grid item md={2} xs={3} className="flex-start">
-                <p className="caption">Cases</p>
+              <Grid item md={2} xs={2} className="flex-start">
+                <p className="caption">Total Cases</p>
               </Grid>
 
-              <Grid item md={2} xs={3} className="flex-start">
+              <Grid item md={2} xs={2} className="flex-start">
+                <p className="caption">Today Cases</p>
+              </Grid>
+
+              <Grid item md={2} xs={2} className="flex-start">
+                <p className="caption">Today Deaths</p>
+              </Grid>
+
+              <Grid item md={2} xs={2} className="flex-start">
+                <p className="caption">Total Deaths</p>
+              </Grid>
+              <Grid item md={2} xs={2} className="flex-start">
                 <p className="caption">Recovered</p>
-              </Grid>
-
-              <Grid item md={2} xs={3} className="flex-start">
-                <p className="caption">Recovery Rate</p>
-              </Grid>
-
-              <Grid item md={2} xs={3} className="flex-start">
-                <p className="caption">Death Rate</p>
               </Grid>
             </Grid>
           </Grid>
@@ -159,11 +200,11 @@ export default function App() {
               let image = `https://www.countryflags.io/${
                 nationCode ? nationCode.Code : null
               }/shiny/64.png`;
-
+              console.log({ item });
               return (
                 <Grid item md={12}>
                   <Grid container>
-                    <Grid item xs={12} md={4} className="flex-start">
+                    <Grid item xs={8} md={2} className="flex-start">
                       <img
                         src={image}
                         width="50px"
@@ -178,27 +219,19 @@ export default function App() {
                         style={{ backgroundColor: "#3498db" }}
                       >
                         <div>
-                          <p className="caption text-hide">Cases</p>
+                          <p className="caption text-hide">Total Cases</p>
                           <p className="titile">{item.cases}</p>
-                        </div>
-                      </div>
-                    </Grid>
-                    <Grid item xs={3} md={2} className="flex-start">
-                      <div className="country-data-item">
-                        <div>
-                          <p className="caption text-hide">Recovered</p>
-                          <p className="titile">{item.recovered}</p>{" "}
                         </div>
                       </div>
                     </Grid>
                     <Grid item xs={3} md={2} className="flex-start">
                       <div
                         className="country-data-item"
-                        style={{ backgroundColor: "#27ae60" }}
+                        style={{ backgroundColor: "#3498db" }}
                       >
                         <div>
-                          <p className="caption text-hide">Recovery</p>
-                          <p className="titile">{recoveredRate} %</p>{" "}
+                          <p className="caption text-hide">Today Cases</p>
+                          <p className="titile">{item.todayCases}</p>
                         </div>
                       </div>
                     </Grid>
@@ -208,8 +241,30 @@ export default function App() {
                         style={{ backgroundColor: "#e74c3c" }}
                       >
                         <div>
-                          <p className="caption text-hide">Death</p>
-                          <p className="titile">{deathsRate} %</p>
+                          <p className="caption text-hide">Today Deaths</p>
+                          <p className="titile">{item.todayDeaths}</p>
+                        </div>
+                      </div>
+                    </Grid>
+                    <Grid item xs={3} md={2} className="flex-start">
+                      <div
+                        className="country-data-item"
+                        style={{ backgroundColor: "#e74c3c" }}
+                      >
+                        <div>
+                          <p className="caption text-hide">Today Deaths</p>
+                          <p className="titile">{item.deaths}</p>
+                        </div>
+                      </div>
+                    </Grid>
+                    <Grid item xs={3} md={2} className="flex-start">
+                      <div
+                        className="country-data-item"
+                        style={{ backgroundColor: "#27ae60" }}
+                      >
+                        <div>
+                          <p className="caption text-hide">Recovered</p>
+                          <p className="titile">{item.recovered}</p>{" "}
                         </div>
                       </div>
                     </Grid>
@@ -223,16 +278,14 @@ export default function App() {
 
           <Grid item xs={12} md={12} className="footer">
             <div>
-             
-              
               <p className="footer-text">
-                Created by{" "}
+                Developed by{" "}
                 <a
                   target="blank"
                   href="https://www.linkedin.com/in/mudasir-afzal-61824678/"
                 >
                   {" "}
-                  Mudasir Afzal in Love with ReactJs
+                  Mudasir Afzal in Love with React
                 </a>
               </p>
             </div>
