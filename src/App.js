@@ -12,12 +12,12 @@ export default function App() {
 
   useEffect(() => {
     axios.get("https://corona.lmao.ninja/countries").then(res => {
-      //console.log(res.data);
+      
       setCountryData([...res.data]);
     });
 
     axios.get("https://corona.lmao.ninja/all").then(res => {
-      console.log("res", res.data);
+      
       setWorldData(res.data);
       setDate(res.data.updated);
     });
@@ -200,7 +200,7 @@ export default function App() {
               let image = `https://www.countryflags.io/${
                 nationCode ? nationCode.Code : null
               }/shiny/64.png`;
-              console.log({ item });
+              
               return (
                 <Grid item md={12}>
                   <Grid container>
