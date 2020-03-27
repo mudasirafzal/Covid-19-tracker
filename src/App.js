@@ -223,25 +223,8 @@ export default function App() {
 
           <Grid item xs={12} md={12} className="footer">
             <div>
-              <p className="footer-text">
-                Source from{" "}
-                <a target="blank" href="https://www.worldometers.info">
-                  worldometers.info
-                </a>
-              </p>
-              <p className="footer-text">
-                API from{" "}
-                <a target="blank" href="https://www.programmableweb.com/">
-                  programmableweb.com
-                </a>
-              </p>
-              <p className="footer-text">
-                Last update at
-                {"   "}
-                {time}
-                {"   "}&{"   "}
-                {day}
-              </p>
+             
+              
               <p className="footer-text">
                 Created by{" "}
                 <a
