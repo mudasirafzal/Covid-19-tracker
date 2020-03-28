@@ -12,12 +12,10 @@ export default function App() {
 
   useEffect(() => {
     axios.get("https://corona.lmao.ninja/countries").then(res => {
-      
       setCountryData([...res.data]);
     });
 
     axios.get("https://corona.lmao.ninja/all").then(res => {
-      
       setWorldData(res.data);
       setDate(res.data.updated);
     });
@@ -187,12 +185,12 @@ export default function App() {
 
           {data.length > 0 ? (
             data.map(item => {
-              let recoveredRate = (
+              /*  let recoveredRate = (
                 Math.round(((100 * item.recovered) / item.cases) * 100) / 100
               ).toFixed(2);
               let deathsRate = (
                 Math.round(((100 * item.deaths) / item.cases) * 100) / 100
-              ).toFixed(2);
+              ).toFixed(2); */
               const nationCode = countryCode.find(name => {
                 return name.Name === item.country;
               });
@@ -200,7 +198,7 @@ export default function App() {
               let image = `https://www.countryflags.io/${
                 nationCode ? nationCode.Code : null
               }/shiny/64.png`;
-              
+
               return (
                 <Grid item md={12}>
                   <Grid container>
@@ -252,7 +250,7 @@ export default function App() {
                         style={{ backgroundColor: "#e74c3c" }}
                       >
                         <div>
-                          <p className="caption text-hide">Today Deaths</p>
+                          <p className="caption text-hide">Total Deaths</p>
                           <p className="titile">{item.deaths}</p>
                         </div>
                       </div>
