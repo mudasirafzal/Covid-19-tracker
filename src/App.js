@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Container } from "@material-ui/core";
+import { Grid, Container, Card, CardContent } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import "./index.css";
 import countryCode from "./code";
@@ -9,7 +10,13 @@ export default function App() {
   const [worldData, setWorldData] = useState({});
   const [date, setDate] = useState(1584724653093);
   const [search, setSearch] = useState("");
-
+  const useStyles = makeStyles({
+    root: {
+      backgroundColor: "#23232399",
+      marginBottom: 10
+    }
+  });
+  const classes = useStyles();
   useEffect(() => {
     axios.get("https://corona.lmao.ninja/countries").then(res => {
       setCountryData([...res.data]);
@@ -26,14 +33,14 @@ export default function App() {
   };
 
   let data = countryData;
-  var updatedDate = new Date(date);
+  /* var updatedDate = new Date(date);
   var day =
     updatedDate.getDate() +
     "-" +
     (updatedDate.getMonth() + 1) +
     "-" +
     updatedDate.getFullYear();
-  var time = updatedDate.getHours() + " : " + updatedDate.getMinutes();
+  var time = updatedDate.getHours() + " : " + updatedDate.getMinutes(); */
 
   if (search.length > 0) {
     let searchResult = countryData.filter(item =>
@@ -149,16 +156,22 @@ export default function App() {
           </Grid>
 
           <Grid item md={12}>
-            <input
-              className="input-box"
-              placeholder="Search Country...."
-              onChange={handleChnage}
-            />
+            <Card className={classes.root}>
+              <CardContent>
+                <Grid container>
+                  <input
+                    className="input-box"
+                    placeholder="Search Country...."
+                    onChange={handleChnage}
+                  />
+                </Grid>
+              </CardContent>
+            </Card>
           </Grid>
 
           <Grid item md={12} xs={12} className="heading-wrapper">
             <Grid container>
-              <Grid item xs={8} md={2} className="flex-start">
+              <Grid item xs={2} md={2} className="flex-start">
                 <p className="caption">Country</p>
               </Grid>
 
@@ -201,72 +214,76 @@ export default function App() {
 
               return (
                 <Grid item md={12}>
-                  <Grid container>
-                    <Grid item xs={8} md={2} className="flex-start">
-                      <img
-                        src={image}
-                        width="50px"
-                        alt="flag"
-                        style={{ margin: "3px", marginRight: "20px" }}
-                      />
-                      <p className="titile">{item.country}</p>
-                    </Grid>
-                    <Grid item xs={3} md={2} className="flex-start">
-                      <div
-                        className="country-data-item"
-                        style={{ backgroundColor: "#3498db" }}
-                      >
-                        <div>
-                          <p className="caption text-hide">Total Cases</p>
-                          <p className="titile">{item.cases}</p>
-                        </div>
-                      </div>
-                    </Grid>
-                    <Grid item xs={3} md={2} className="flex-start">
-                      <div
-                        className="country-data-item"
-                        style={{ backgroundColor: "#3498db" }}
-                      >
-                        <div>
-                          <p className="caption text-hide">Today Cases</p>
-                          <p className="titile">{item.todayCases}</p>
-                        </div>
-                      </div>
-                    </Grid>
-                    <Grid item xs={3} md={2} className="flex-start">
-                      <div
-                        className="country-data-item"
-                        style={{ backgroundColor: "#e74c3c" }}
-                      >
-                        <div>
-                          <p className="caption text-hide">Today Deaths</p>
-                          <p className="titile">{item.todayDeaths}</p>
-                        </div>
-                      </div>
-                    </Grid>
-                    <Grid item xs={3} md={2} className="flex-start">
-                      <div
-                        className="country-data-item"
-                        style={{ backgroundColor: "#e74c3c" }}
-                      >
-                        <div>
-                          <p className="caption text-hide">Total Deaths</p>
-                          <p className="titile">{item.deaths}</p>
-                        </div>
-                      </div>
-                    </Grid>
-                    <Grid item xs={3} md={2} className="flex-start">
-                      <div
-                        className="country-data-item"
-                        style={{ backgroundColor: "#27ae60" }}
-                      >
-                        <div>
-                          <p className="caption text-hide">Recovered</p>
-                          <p className="titile">{item.recovered}</p>{" "}
-                        </div>
-                      </div>
-                    </Grid>
-                  </Grid>
+                  <Card className={classes.root}>
+                    <CardContent>
+                      <Grid container>
+                        <Grid item xs={9} md={2} className="flex-start">
+                          <img
+                            src={image}
+                            width="50px"
+                            alt="flag"
+                            style={{ margin: "3px", marginRight: "20px" }}
+                          />
+                          <p className="titile">{item.country}</p>
+                        </Grid>
+                        <Grid item xs={3} md={2} className="flex-start">
+                          <div
+                            className="country-data-item"
+                            style={{ backgroundColor: "#3498db" }}
+                          >
+                            <div>
+                              <p className="caption text-hide">Total Cases</p>
+                              <p className="titile">{item.cases}</p>
+                            </div>
+                          </div>
+                        </Grid>
+                        <Grid item xs={3} md={2} className="flex-start">
+                          <div
+                            className="country-data-item"
+                            style={{ backgroundColor: "#3498db" }}
+                          >
+                            <div>
+                              <p className="caption text-hide">Today Cases</p>
+                              <p className="titile">{item.todayCases}</p>
+                            </div>
+                          </div>
+                        </Grid>
+                        <Grid item xs={3} md={2} className="flex-start">
+                          <div
+                            className="country-data-item"
+                            style={{ backgroundColor: "#e74c3c" }}
+                          >
+                            <div>
+                              <p className="caption text-hide">Today Deaths</p>
+                              <p className="titile">{item.todayDeaths}</p>
+                            </div>
+                          </div>
+                        </Grid>
+                        <Grid item xs={3} md={2} className="flex-start">
+                          <div
+                            className="country-data-item"
+                            style={{ backgroundColor: "#e74c3c" }}
+                          >
+                            <div>
+                              <p className="caption text-hide">Total Deaths</p>
+                              <p className="titile">{item.deaths}</p>
+                            </div>
+                          </div>
+                        </Grid>
+                        <Grid item xs={3} md={2} className="flex-start">
+                          <div
+                            className="country-data-item"
+                            style={{ backgroundColor: "#27ae60" }}
+                          >
+                            <div>
+                              <p className="caption text-hide">Recovered</p>
+                              <p className="titile">{item.recovered}</p>{" "}
+                            </div>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </CardContent>
+                  </Card>
                 </Grid>
               );
             })
@@ -283,7 +300,7 @@ export default function App() {
                   href="https://www.linkedin.com/in/mudasir-afzal-61824678/"
                 >
                   {" "}
-                  Mudasir Afzal in Love with React
+                  Mudasir Afzal
                 </a>
               </p>
             </div>

@@ -5,7 +5,7 @@ body {
   box-sizing: border-box;
 }
 
-a{
+a {
   text-decoration: none;
   color: #3498db;
 }
@@ -16,7 +16,7 @@ body {
   color: #fff;
 }
 
-.loading-screen{
+.loading-screen {
   min-height: 500px;
   height: 95vh;
   width: 100%;
@@ -24,7 +24,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .app-wrapper {
@@ -35,16 +34,15 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0.13;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   background-size: cover;
   z-index: -1 !important;
 }
 
-.app-container{
-min-height: 1000px;
-padding: 50px;
-
+.app-container {
+  min-height: 1000px;
+  padding: 50px;
 }
 
 .heading-one {
@@ -110,10 +108,9 @@ padding: 50px;
   padding: 10px 15px;
 }
 
-.input-box{
-  width: 80vw;
+.input-box {
+  width: 84vw;
   height: 60px;
-  margin-top: 25px;
   background-color: transparent;
   border: none;
   color: #c1c1c1;
@@ -129,16 +126,14 @@ input:focus {
   outline: none !important;
 }
 
-.footer{
+.footer {
   height: 200px;
   justify-content: center;
   display: flex;
   align-items: center;
-  
 }
- 
-.footer-text
-{
+
+.footer-text {
   text-align: center;
   font-size: 14px;
   line-height: 14px;
@@ -146,23 +141,21 @@ input:focus {
   font-family: "Roboto";
 }
 
-.text-hide{
-  display: none
+.text-hide {
+  display: none;
 }
 
-
 @media only screen and (max-width: 900px) {
-  
-.app-container{
-  padding: 30px;
+  .app-container {
+    padding: 30px;
   }
 
   .heading-wrapper {
     display: none;
   }
 
-  .text-hide{
-    display: block
+  .text-hide {
+    display: block;
   }
 
   .heading-one {
@@ -176,41 +169,35 @@ input:focus {
     font-weight: 900;
   }
 
-  .input-box{
+  .input-box {
     font-size: 18px;
     line-height: 18px;
     font-weight: 300;
     font-family: "Roboto";
     /* padding-left: 15px; */
-  margin-top: 0px;
-
+    margin-top: 0px;
   }
 
+  .titile {
+    font-size: 13px;
+    font-weight: 500;
+  }
 
-  
-.titile {
-  font-size: 13px;
-  font-weight: 500;
-}
+  .caption {
+    font-size: 9px;
+    font-weight: 500;
+    font-family: "Roboto";
+  }
 
-.caption {
-  font-size: 9px;
-  font-weight: 500;
-  font-family: "Roboto";
-}
+  .world-data-item {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 0px;
+    padding-top: 20px;
+  }
 
-
-.world-data-item {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: 10px 0px;
-  padding-top: 20px;
-}
-
-
-.title-large {
-  font-size: 20px;
-}
-
+  .title-large {
+    font-size: 20px;
+  }
 }
