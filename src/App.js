@@ -156,17 +156,11 @@ export default function App() {
           </Grid>
 
           <Grid item md={12}>
-            <Card className={classes.root}>
-              <CardContent>
-                <Grid container>
-                  <input
-                    className="input-box"
-                    placeholder="Search Country...."
-                    onChange={handleChnage}
-                  />
-                </Grid>
-              </CardContent>
-            </Card>
+            <input
+              className="input-box"
+              placeholder="Search Country...."
+              onChange={handleChnage}
+            />
           </Grid>
 
           <Grid item md={12} xs={12} className="heading-wrapper">
