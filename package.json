@@ -2,7 +2,7 @@
   "name": "covid19-updates",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://muqsithck.github.io/covid19-updates",
+  "homepage": "/",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
     "@material-ui/lab": "^4.0.0-alpha.46",
